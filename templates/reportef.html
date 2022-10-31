@@ -1,0 +1,146 @@
+{% load humanize %}
+{% load sga_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="author" content="" />
+    <style>
+
+        @page {
+            size: a4 portrait;
+            @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; top: 20pt;
+            }
+            @frame content_frame {          /* Content Frame */
+            left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+            }
+            @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+            }
+        }
+        .table { border: 1px solid #666666;  border-collapse:collapse; font-family: "Arial"; line-height: 7px; font-size: 7pt }
+        .tableb { border: 0;  border-collapse:collapse; font-family: "Arial"; line-height: 7px; font-size: 7pt }
+        td{ border: 1px solid #666666; line-height:7px; font-size: 6pt;  vertical-align:top; padding:3px; font-family:"Arial", Verdana, Arial, sans-serif; }
+        img{
+            opacity: 0.5;
+        }
+    </style>
+
+</head>
+<body>
+<div id="footer_content"> pag. <pdf:pagenumber></pdf:pagenumber> </div>
+<div id="header_content">
+    <table class="tableb">
+        <thead>
+        <tr>
+            <th style="text-align: left">
+                <img src="/media/reportes/encabezados_pies/logo_certificado.png" height="40" width="120">
+            </th>
+        </tr>
+        <tr>
+            <th style="text-align: center; color: rgb(49, 49, 49); font-size: 12pt">
+               Cronograma de Actividades
+            </th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div><p>Fecha: {{fecha_act}}</p></div>
+<div class="content">
+    <table class="table">
+        <thead>
+
+        <tr>
+            <th style="text-align: left; background-color: lightgrey; padding-top: 3px; padding-left: 3px; width: 100%; padding-bottom: 3px">
+                Actividades {{tipo}} del Docente
+            </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>{{actor}}Fechas</th>
+                        <th>Horario</th>
+                        <th>Horas</th>
+                        <th>Contenido</th>
+                        <th>Actividades</th>
+                        {% if actor %}<th>Cumplimiento</th>{% endif %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%for clase in clases%}    
+                        <tr>
+                            <td style="text-align: center">{{ clase.fechaclase }}</td>
+                            <td style="text-align: center"><p>{{ clase.hora|date:"H:i" }} - {{ clase.hora_fin|date:"H:i" }}</p></td>
+                            <td style="text-align: center"><p>{{ clase.tiempoclase|date:"H:i" }}</p></td>
+                            <td style="text-align: center"><p>{{ clase.contenido }}</p></td>
+                            <td style="text-align: center">{{ clase.actividades }}</td>
+                            {%if actor%}
+                                <td style="text-align: center">
+                                {% if not clase.cumplimiento %}
+                                    No Cumplio 
+                                {%else%}
+                                    Cumplió lo planificado
+                                {%endif%}
+                                </td>
+                            {%endif%}
+                        </tr>
+                    {%endfor%}  
+                    </tbody>
+                </table>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+  
+    <table class="table" style="border: 0">
+
+
+        <thead >
+
+        <tr style="border: solid 1px">
+            <th style="text-align: left; background-color: lightgrey; padding-top: 3px; padding-left: 3px; width: 100%; padding-bottom: 3px" colspan="2">
+                Firma
+            </th>
+            <br>
+                <br>
+                <br>
+
+        </tr>
+        </thead>
+        <tbody style="border: 0">
+        <tr style="border: 0">
+            <td style="border: 0" colspan="2">
+  <br>
+                <br>
+                <br>
+                ____________________________________
+                <br>
+                <p><b>Docente Tutor</b></p>
+                <br>
+                <br>
+                <br>
+                <br>
+
+            </td>
+
+        </tr>
+        <tr style="border: 0">
+            <td style="border: 0" colspan="2">
+                
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

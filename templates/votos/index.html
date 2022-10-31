@@ -1,0 +1,76 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voto</title>
+    <style>
+       
+        .componente img{
+            border-radius: 50%;
+            border: 3px solid rgb(24, 23, 23);
+        }
+        .caja{
+            height: 50px; border:2px solid orange;
+            background-color: aquamarine;
+        }
+        .caja hr{
+            width: 80%;
+            height: 3px;
+            background-color: rgb(66, 66, 70);
+            border-radius: 2px;
+        }
+        .caja .raya{
+            display: none;
+            position: absolute;
+            z-index: 100;
+            transform:translate(50%,0px) rotate(-45deg);
+            width: 65px;
+            background-color: tomato;
+            transition: 1s;
+            
+           
+        }
+    </style>
+
+   
+</head>
+<body>
+    <h1>Usuario: [{{persona}}]</h1>
+    <p>"{{saludo|title}}"</p>
+    <main>
+        <div class="container" style="display: flex;">
+         {%for candidato in candidatos%}
+         <div class="componente" style=" text-align: center ;border:2px solid orange ;margin: 10px;width: 150px; border-radius:5px;padding: 10px;">
+            <b>({{candidato.lista.nombre}}) </b><br>{{candidato.persona.nombres}}
+            <img src="{%static candidato.foto%}" alt="foto" style="height:200px ;">
+            <p>{{candidato.cargo.nombre}}</p>
+            <div onmouseout="votoout(this)" onclick="eleccion('{{persona.id}}','{{candidato.id}}','{{candidato.lista.id}}');" onmouseover="voto(this)" class="caja {{candidato}}" style="position:relative;display:flex;text-align: center; height: 50px; border:2px solid orange;align-items:center;">
+                <hr class="raya">  <hr> 
+            </div>
+         </div>
+         {%endfor%}
+        </div>   
+    </main>
+    <script>
+            const caja=document.querySelector(".caja");
+            caja.addEventListener('mouseover',(e)=>{
+            });
+            function voto (e){
+                
+                e.children[0].style.display="block";
+                e.style.cursor="pointer";
+            }
+            function votoout(e){
+                e.children[0].style.display="none";
+            }
+            function eleccion(usuario,candidato,lista){
+                alert(`Voto por -> ${candidato} ${lista}`);
+                location.href="votos/eleccion?u="+usuario+"&c="+candidato;
+
+            }
+    </script>
+</body>
+</html>

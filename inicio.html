@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Plantilla</title>
+</head>
+<body>
+    <h1>Esta es una plantilla</h1>
+    <p><b>Ejemplo de valores desde la vista</b></p>
+     <p>Mi valor: [<b>{{valor}}</b>]</p>
+    
+    {#comentario de una linea#}
+    {% comment "" %}
+            Comentarios multi-linea
+    {% endcomment %}
+
+    <img src="/media/fotos/2022/10/26/juana.jfif" alt="foto">
+     <table> 
+     {% for x in tabla  %}
+       <tr><td>
+        {{x}}
+       <td></tr>
+     {% endfor %}
+     </table>
+     total: {{tabla|length}}
+     
+</body>
+</html>

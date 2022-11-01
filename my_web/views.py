@@ -12,6 +12,13 @@ def saludo(request):
     data['valor']=valor
     return render(request,'inicio.html',data)
 
+def resultados(request):
+    datos={}
+    datos["candidatos"]=Candidato.objects.filter(cargo_id=1)
+    print("A:",Urna.objects.filter(candidato=1).count())
+    print("B:", Urna.objects.filter(candidato=2).count())
+
+    return render(request, 'resultados.html',datos)
 def login(request):
     data={}
     if(request.method=="POST"):

@@ -46,6 +46,9 @@ class Candidato(models.Model):
     def __str__(self) -> str:
         return self.persona.nombres
 
+    def votos(self):
+        return Urna.objects.filter(candidato=self.id).count()
+
 
 
 class Urna(models.Model):

@@ -28,7 +28,7 @@ def login(request):
             print("¿votó?: puede")
             cand = Candidato.objects.all()
             data['candidatos']=cand
-            data['saludo']="Hola este es un salulo"
+            data['title']="Elección 2022"
             
             return render(request, "votos/index.html", data)
         else:

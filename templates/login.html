@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <title>Login</title>
 </head>
 <body>
@@ -17,19 +20,23 @@
         </ul>
      </nav>
     </header>
-    <div class="marco-login">
-        <form  method="post">
-            {% csrf_token %}
-            <div>
-               <!-- <input type="text" name="user" id="user" placeholder="Escriba su Usuario">-->
-                <label for="">Ingrese su identificaión</label>
-            </div> 
-            <div>
-                    <input type="password" name="pass" id="pass" value="">
-            </div>
-                <input type="submit" value="Ingresar">
-            </div>
-        </form>
+    <div class="marco-login container">
+         <div class="row">
+            <form  method="post" class="col s12">
+                {% csrf_token %}
+                <div>
+                   <!-- <input type="text" name="user" id="user" placeholder="Escriba su Usuario">-->
+                    <label for="">Ingrese su identificaión</label>
+                </div>
+                <div>
+                        <input type="password" name="pass" id="pass" value="">
+                </div>
+                    <input class="waves-effect waves-light btn" type="submit" value="Ingresar">
+
+            </form>
+         </div>
+    </div>
+
 
         <script>
             document.getElementById("pass").value="";

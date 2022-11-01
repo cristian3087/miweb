@@ -2,21 +2,29 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Resultados</title>
 </head>
 <body>
   <h1>Resultados</h1>
-  <table border="1">
+  <div class="container">
+    <table  class="striped">
+    <thead>
       <tr>
           <th>Candidatos</th>
           <th>Votos</th>
-      </th>
+      </tr>
+    </thead>
+    <tbody>
       {%for c in candidatos%}
       <tr>
           <td>{{c}} </td> <td> {{c.votos}}</td>
       </tr>
       {%endfor%}
+    </tbody>
   </table>
+  </div>
+
 
 </body>
 </html>

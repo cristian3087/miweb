@@ -8,10 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Voto</title>
     <style>
-       
+        .componente{
+
+            text-align: center ;border:2px solid orange ;
+            margin: 10px;width: 200px; 
+            border-radius:5px;padding: 10px;
+        }
         .componente img{
             border-radius: 50%;
-            border: 3px solid rgb(24, 23, 23);
+           /* border: 3px solid rgb(172, 34, 34);*/
+            object-fit: cover;
+            width: 150px;
+            height:200px;
         }
         .caja{
             height: 50px; border:2px solid orange;
@@ -48,23 +56,21 @@
 
         <div class="container" style="display: flex;">
          {%for candidato in candidatos%}
-         <div class="componente" style=" text-align: center ;border:2px solid orange ;margin: 10px;width: 150px; border-radius:5px;padding: 10px;">
-            <b>({{candidato.lista.nombre}}) </b><br>{{candidato.persona.nombres}}
-            <img src="{%static candidato.foto%}" alt="foto" style="height:200px ;">
+         <div class="componente">
+            <b>({{candidato.lista.nombre}}) </b><br>{{candidato.nombres}}
+            <img src="{%static candidato.foto%}" alt="foto">
             <p>{{candidato.cargo.nombre}}</p>
             <div onmouseout="votoout(this)" onclick="eleccion('{{persona.id}}','{{candidato.id}}','{{candidato.lista.id}}');" onmouseover="voto(this)" class="caja {{candidato}}" style="position:relative;display:flex;text-align: center; height: 50px; border:2px solid orange;align-items:center;">
                 <hr class="raya">  <hr> 
             </div>
          </div>
          {%endfor%}
-        </div>   
-    </main>
-    <script>
+            <script>
             const caja=document.querySelector(".caja");
             caja.addEventListener('mouseover',(e)=>{
             });
             function voto (e){
-                
+
                 e.children[0].style.display="block";
                 e.style.cursor="pointer";
             }
@@ -72,10 +78,15 @@
                 e.children[0].style.display="none";
             }
             function eleccion(usuario,candidato,lista){
-                alert(`Voto por -> ${candidato} ${lista}`);
-                location.href="votos/eleccion?u="+usuario+"&c="+candidato;
-
+                console.log("Llegue al Voto");
+                //alert(`Voto por -> ${candidato} ${lista}`);
+               let v=confirm("Esta seguro");
+                if (v==true){
+                    location.href="votos/eleccion?u="+usuario+"&c="+candidato;
+                }
             }
     </script>
+        </div>
+        </main>
 </body>
 </html>

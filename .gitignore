@@ -1,4 +1,4 @@
 **/migrations/**
 *py~
 *.html~
-
+*.py*

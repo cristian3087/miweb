@@ -16,7 +16,7 @@ class Persona(models.Model):
 class Cargo(models.Model):
     nombre=models.CharField(verbose_name="Cargo", max_length=30)
     fecha=models.DateField(auto_now_add=True)
-    descripcion=models.TextField(verbose_name="Descripcion")
+    descripcion=models.TextField(verbose_name="Descripcion",null=True,blank=True)
     def __str__(self) -> str:
         return self.nombre
 
@@ -34,17 +34,20 @@ class Periodo(models.Model):
     fin = models.DateField(verbose_name=u'Fecha fin')
     activo = models.BooleanField(default=True, verbose_name=u'Visible')
     def __str__(self) -> str:
-        return self.nombre52
+        return self.nombre
 
 
 class Candidato(models.Model):
     periodo=models.ForeignKey(Periodo, verbose_name='Periodo' , on_delete=models.CASCADE)
-    persona=models.ForeignKey(Persona, verbose_name='Candidato', on_delete=models.CASCADE)
+    #persona=models.ForeignKey(Persona, verbose_name='Candidato', on_delete=models.CASCADE)
+    nombres = models.CharField(default='',max_length=200,verbose_name='Nombres')
+    apellidos = models.CharField(default='',max_length=200,verbose_name='Apellidos',blank=True)
     foto = models.ImageField(upload_to='fotos/%Y/%m/%d', verbose_name=u'Foto', blank=True, null=True)
-    cargo= models.ForeignKey(Cargo,verbose_name="Cargo", on_delete=models.CASCADE)
-    lista=models.ForeignKey(Lista,verbose_name="Lista", on_delete=models.CASCADE)
+    cargo = models.ForeignKey(Cargo,verbose_name="Cargo", on_delete=models.CASCADE)
+    lista = models.ForeignKey(Lista,verbose_name="Lista", on_delete=models.CASCADE)
+    mostrar = models.BooleanField(default=False, verbose_name='Mostrar')
     def __str__(self) -> str:
-        return self.persona.nombres
+        return self.nombres + ' '+ self.apellidos
 
     def votos(self):
         return Urna.objects.filter(candidato=self.id).count()
@@ -57,5 +60,7 @@ class Urna(models.Model):
     voto= models.BooleanField(default=False,verbose_name="voto")
     
     def __str__(self) -> str:
-        return self.candidato.persona.nombres 
+        return self.candidato.nombres
+
+
     

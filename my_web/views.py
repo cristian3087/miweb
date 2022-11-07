@@ -1,5 +1,5 @@
 #from django.http import HttpResponseBadRequest
-import re
+
 from django.shortcuts import render
 from votos.models import Persona, Candidato, Urna
 def saludo(request):
@@ -13,11 +13,13 @@ def saludo(request):
     return render(request,'inicio.html',data)
 
 def resultados(request):
+    from django.db.models import Count
     datos={}
-    datos["candidatos"]=Candidato.objects.filter(cargo_id=1)
-    print("A:",Urna.objects.filter(candidato=1).count())
-    print("B:", Urna.objects.filter(candidato=2).count())
+    d = Urna.objects.values('candidato').annotate(count=Count('voto')).order_by()
+    print(d)
 
+    datos['resultados']=d
+    datos["candidatos"]=Candidato.objects.filter(mostrar=True)
     return render(request, 'resultados.html',datos)
 def login(request):
     data={}

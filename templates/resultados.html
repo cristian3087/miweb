@@ -4,20 +4,36 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Resultados</title>
+    <style>
+        img{
+            width:60px;
+            border-radius:10px;
+            height:80px;
+            object-fit: cover;
+            /*border: 2px solid red;*/
+            /*box-shadow: 3px 3px black;*/
+            padding: 3px;
+            background-color: rgb(121, 117, 117);
+        }
+    </style>
 </head>
 <body>
   <h1>Resultados</h1>
   <div class="container">
+
+  </div>
+
+  <div class="container">
     <table  class="striped">
     <thead>
-      <tr>
+      <tr><th>Imagen</th>
           <th>Candidatos</th>
           <th>Votos</th>
       </tr>
     </thead>
     <tbody>
       {%for c in candidatos%}
-      <tr>
+      <tr><td><img src="/static/{{c.foto}}" alt="{{c.foto}}"></td>
           <td>{{c}} </td> <td> {{c.votos}}</td>
       </tr>
       {%endfor%}

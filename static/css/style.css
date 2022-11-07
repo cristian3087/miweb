@@ -25,6 +25,10 @@ table td{
     border-radius: 15px;
     font-size: 14px;
 }
+.marco-login img{
+    background-color: red;
+}
+
 /*
 .marco-login input{
     padding: 10px;

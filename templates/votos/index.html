@@ -69,7 +69,7 @@
 </head>
 <body>
     <header class="container">
-        <b>Usuario: [{{persona}}]</b>
+        <b class="btn waves-effect waves-light grey darken-4 lighten-2">Usuario: [{{persona}}]</b>
         <h3>{{title}}</h3>
     </header>
 
@@ -81,7 +81,7 @@
             <b>({{candidato.lista.nombre}}) </b><br>{{candidato.nombres}}
             <img src="media/{{candidato.foto}}" alt="{{candidato.lista}}">
             <p>{{candidato.cargo.nombre}}</p>
-            <div onmouseout="votoout(this)" onclick="eleccion('{{persona.id}}','{{candidato.id}}','{{candidato.lista.id}}');" onmouseover="voto(this)" class="caja {{candidato}}" style="position:relative;display:flex;text-align: center; height: 50px; border:2px solid orange;align-items:center;">
+            <div onmouseout="votoout(this)" onclick="eleccion('{{persona.id}}','{{candidato.id}}','{{candidato.lista.id}}','{{candidato}}','{{candidato.lista.nombre}}');" onmouseover="voto(this)" class="caja {{candidato}}" style="position:relative;display:flex;text-align: center; height: 50px; border:2px solid orange;align-items:center;">
                 <hr class="raya">  <hr> 
             </div>
          </div>
@@ -120,10 +120,10 @@
             function votoout(e){
                 e.children[0].style.display="none";
             }
-            function eleccion(usuario,candidato,lista){
-                console.log("Llegue al Voto");
+            function eleccion(usuario,candidato,lista,cand,list){
+              
                 //alert(`Voto por -> ${candidato} ${lista}`);
-               let v=confirm("Esta seguro");
+               let v=confirm("Esta seguro de votar por: "+cand+ " ("+ list.toUpperCase()+")");
                 if (v==true){
                     location.href="votos/eleccion?u="+usuario+"&c="+candidato;
                 }

@@ -24,11 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
-  <div class="container">
-      <canvas id="myChart">
-
-      </canvas>
- </div>
+  
 
   <div class="container">
     <table  class="striped">
@@ -40,13 +36,19 @@
     </thead>
     <tbody>
       {%for c in candidatos%}
-      <tr><td><img src="/static/{{c.foto}}" alt="{{c.foto}}"></td>
+      <tr><td><img src="/media/{{c.foto}}" alt="{{c}}"></td>
           <td>{{c}} </td> <td> {{c.votos}}</td>
       </tr>
       {%endfor%}
     </tbody>
   </table>
   </div>
+
+  <div class="container">
+    <canvas id="myChart">
+
+    </canvas>
+</div>
 <script>
   var ctx=document.getElementById("myChart").getContext("2d");
   const set =JSON.parse('{{can|escapejs}}');
@@ -61,7 +63,7 @@
     data:{
       labels:nombres,
       datasets:[{
-          label:"Resultados",
+          label:"Votos",
           data:votos,
           backgroundColor: [
           'rgba(255, 99, 132, 0.5)',

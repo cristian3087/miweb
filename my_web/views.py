@@ -25,7 +25,6 @@ def resultados(request):
     for x in candidatos:
         can.append(x.nombres)
         res[str(x.nombres)]=x.votos()
-
     can=json.dumps(can)
     res=json.dumps(res)
     print(res)

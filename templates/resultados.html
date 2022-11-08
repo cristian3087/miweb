@@ -14,14 +14,24 @@
             /*box-shadow: 3px 3px black;*/
             padding: 3px;
             background-color: rgb(121, 117, 117);
-        }
+        
+          }
+          #myChart{
+            max-width: 80%;
+            max-height: 300px;
+            
+
+          }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
   <h1>Resultados</h1>
   <div class="container">
+      <canvas id="myChart">
 
-  </div>
+      </canvas>
+ 
 
   <div class="container">
     <table  class="striped">
@@ -40,7 +50,38 @@
     </tbody>
   </table>
   </div>
-
+<script>
+  var ctx=document.getElementById("myChart").getContext("2d");
+  const set =JSON.parse('{{can|escapejs}}');
+  const resul=JSON.parse('{{res|escapejs}}');
+  let nombres=[],votos=[];
+  for (x in resul){
+    nombres.push(x);
+    votos.push(resul[x]);
+  }  
+  const myChart= new Chart(ctx,{
+    type:"bar",
+    data:{
+      labels:nombres,
+      datasets:[{
+          label:"Resultados",
+          data:votos,
+          backgroundColor: [
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(75, 192, 192, 0.8)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(153, 102, 255, 0.8)'],
+          borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(255, 159, 64)',
+          'rgb(153, 102, 255)',
+          'rgb(255, 205, 86)'],
+          borderWidth:1
+        }]
+    },
+    
+  });
+</script>
 
 </body>
 </html>

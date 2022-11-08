@@ -14,12 +14,25 @@ def saludo(request):
 
 def resultados(request):
     from django.db.models import Count
+    import json
     datos={}
     d = Urna.objects.values('candidato').annotate(count=Count('voto')).order_by()
     print(d)
-
+    can=[]
+    res={} 
     datos['resultados']=d
-    datos["candidatos"]=Candidato.objects.filter(mostrar=True)
+    datos["candidatos"]=candidatos=Candidato.objects.filter(mostrar=True)
+    for x in candidatos:
+        can.append(x.nombres)
+        res[str(x.nombres)]=x.votos()
+
+    can=json.dumps(can)
+    res=json.dumps(res)
+    print(res)
+    datos["res"]=res
+    datos["can"] =can
+    
+    print(can)
     return render(request, 'resultados.html',datos)
 def login(request):
     data={}

@@ -19,7 +19,7 @@
 
         }
         .componente{
-
+            display: inline-block;
             text-align: center ;border:2px solid orange ;
             margin: 10px;width: 200px; 
             border-radius:5px;padding: 10px;
@@ -54,9 +54,12 @@
            
         }
         .candidatos{
-            display: flex;
-            justify-content: center;
+           text-align: center;
+
+            
+            
         }
+       
         h3{
             text-align: center;
             font-weight: bolder;
@@ -76,17 +79,16 @@
         <main>
 
         <div class="container candidatos" >
-         {%for candidato in candidatos%}
-         <div class="componente">
-            <b>({{candidato.lista.nombre}}) </b><br>{{candidato.nombres}}
-            <img src="media/{{candidato.foto}}" alt="{{candidato.lista}}">
-            <p>{{candidato.cargo.nombre}}</p>
-            <div onmouseout="votoout(this)" onclick="eleccion('{{persona.id}}','{{candidato.id}}','{{candidato.lista.id}}','{{candidato}}','{{candidato.lista.nombre}}');" onmouseover="voto(this)" class="caja {{candidato}}" style="position:relative;display:flex;text-align: center; height: 50px; border:2px solid orange;align-items:center;">
-                <hr class="raya">  <hr> 
-            </div>
-         </div>
-         {%endfor%}
-           
+                {%for candidato in candidatos%}
+                <div class="componente">
+                    <b>({{candidato.lista.nombre}}) </b><br>{{candidato.nombres}}
+                    <img src="media/{{candidato.foto}}" alt="{{candidato.lista}}">
+                    <p>{{candidato.cargo.nombre}}</p>
+                    <div onmouseout="votoout(this)" onclick="eleccion('{{persona.id}}','{{candidato.id}}','{{candidato.lista.id}}','{{candidato}}','{{candidato.lista.nombre}}');" onmouseover="voto(this)" class="caja {{candidato}}" style="position:relative;display:flex;text-align: center; height: 50px; border:2px solid orange;align-items:center;">
+                        <hr class="raya">  <hr> 
+                    </div>
+                </div>
+                {%endfor%}  
         </div>
         </main>
         <footer class="page-footer">

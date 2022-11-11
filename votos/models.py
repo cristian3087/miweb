@@ -2,6 +2,7 @@ from email.policy import default
 from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 # Create your models here.
 class Persona(models.Model):
@@ -62,5 +63,7 @@ class Urna(models.Model):
     def __str__(self) -> str:
         return self.candidato.nombres
 
-
+class Wiki(models.Model):
+    title=models.CharField(max_length=30)
+    data= HTMLField()
     

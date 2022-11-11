@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Resultados</title>
     <style>
         img{
@@ -19,13 +20,26 @@
           #myChart{
             max-height: 300px;
           }
-        
+         .btn-print{
+            border-radius: 5px;         
+            margin-top: 10px;
+
+          }
+         .encabezado{
+          display: flex;
+          justify-content: flex-end;
+          /*align-items: center;*/
+         }
+
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
   
-
+   <header class="container encabezado">
+    <button class="btn btn-print" onclick="print()"><i class="material-icons">print</i></button>
+   </header>
   <div class="container">
     <table  class="striped">
     <thead>
@@ -46,7 +60,6 @@
 
   <div class="container">
     <canvas id="myChart">
-
     </canvas>
 </div>
 <script>

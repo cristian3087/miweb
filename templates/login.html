@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,9 +37,12 @@
             text-align: center;
             margin-top: 6px;
         }
+        #pass{
+          font-size: 20px;
+        }
     </style>
-
     <title>Login</title>
+    
 </head>
 <body>
 
@@ -47,6 +50,7 @@
     <nav>
         <ul>
             <li><a href="resultados/" >Resultados</a></li>
+            <li><a href="{%url 'wiki'%}" >Wiki</a></li>
         </ul>
      </nav>
     </header>
@@ -55,7 +59,7 @@
       <div class="row">
         <div class="col s12 m6"> 
             <div class="card-panel caja-login">
-             <form  method="post" >
+             <form  method="post" autocomplete="off">
                 {% csrf_token %}
                 <br/>
                 <div>
@@ -63,7 +67,7 @@
                     <label class="flow-text" for="">Ingrese su identificaión</label>
                 <br></div>
                 <div>
-                        <input class="flow-text" type="password" name="pass" id="pass" value="">
+                        <input class="flow-text" type="password" placeholder="******" name="pass" id="pass" maxlength="10" value="">
                 </div>
                     <input class="waves-effect waves-light btn" type="submit" value="Ingresar">
 
@@ -88,9 +92,15 @@
           </div>
         </div>
       </footer>
-
-        <script>
-            document.getElementById("pass").value="";
-        </script>
+      <script>
+        caja= document.getElementById("pass");
+        caja.value="";
+        caja.addEventListener('click', function(e){ 
+          e.target.value="";
+          console.log("Click",e.target.value);
+        })
+        console.log("caja:",caja);
+  
+     </script>
 </body>
 </html>

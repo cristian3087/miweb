@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Document</title>
+    <script>
+       /* tinymce.init({
+            selector: 'textarea',  // change this value according to your HTML
+            deprecation_warnings: false
+        });*/
+    </script>
+</head>
+{{ form.media }}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+    <h1 class="container" style="text-align:center;">WIKI</h1>
+    <div class="container">
+        <div class="card  red lighten-5">
+            <div class="card-header">
+                <h4 class="card-title text-center">Formulario</h4>
+            </div>
+            <div class="card-content">
+                <form action="" method="post">{%csrf_token%}
+                    {{form}}
+                    
+                    <input type="hidden" name="id" value="{{id}}">
+                </form>
+                <div class="card-action">
+                    <button class="waves-effect orange btn" style="margin-top: 5px;margin-bottom: 10px;" type="submit">
+                        <i class ="material-icons left">save</i>Guardar</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+{%for w in wikis%}
+<div class="container">
+  <div class="card">
+    <div class="card-content">
+        <div class="card-title"><h3>{{w.title}}</h3></div>
+        <div class="description">{{w.data|safe}}</div>
+        <div class="right-align">       
+            <a class="btn-floating btn-small blue" href="/votos/wiki?id={{w.id}}"><i class ="material-icons center">edit</i>
+                </a>
+                <a class="btn-floating btn-small red" href="/votos/wiki?id={{w.id}}"><i class ="material-icons center">delete</i>
+                </a>
+        </div>
+       </div> 
+  </div>  
+</div>
+{%endfor%}    
+</body>
+</html>

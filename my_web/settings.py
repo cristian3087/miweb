@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import os
+from os import path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +38,9 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #"django.contrib.flatpages",
+    #"django.contrib.sites",
+    'tinymce',
 ]
 
 LOCAL_APPS = [
@@ -129,10 +132,27 @@ STATICFILES_DIRS=[
 #URL Imagenes
 MEDIA_URL='/media/'
 #Ruta donde se almacenan
-MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
-print(MEDIA_ROOT)
+MEDIA_ROOT=path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+#Configuración de Editor de Texto
+#TINYMCE_SPELLCHECKER = True
+#TINYMCE_COMPRESSOR = True
+'''
+TINYMCE_DEFAULT_CONFIG = {
+    "theme": "silver",
+    "height": 500,
+    "menubar": False,
+    "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
+    "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+    "code,help,wordcount",
+    "toolbar": "undo redo | formatselect | "
+    "bold italic backcolor forecolor | alignleft aligncenter "
+    "alignright alignjustify | bullist numlist outdent indent | "
+    "removeformat | help",
+}'''
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

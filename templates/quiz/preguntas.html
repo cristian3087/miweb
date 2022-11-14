@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Preguntas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
+            .pregunta{
+                border-radius: 8px;
+                color: rgb(43, 41, 41);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 style="text-align:center ;">PREGUNTAS</h1>
+            <main>  
+
+                {%for pregunta in preguntas%}
+                <section class="card pregunta grey lighten-3" style="padding:15px ;">
+                    <span class="card-title active">Pregunta:</span>
+                    <p class="bold caption"> <b>{{pregunta.enunciado|safe}}</b></p>
+                    <div class="card-action white" style="border-radius:10px;">
+                      <p>Respuesta:</p>
+                        <form action="#">
+                            <p>
+                              <label>
+                                <input name="group1" type="radio" checked />
+                                <span><b style="color:rgb(75, 73, 73)">{{pregunta.respuesta}}</b></span>
+                              </label>
+                            </p>
+                            <p>
+                              <label>
+                                <input name="group1" type="radio" />
+                                <span>{{pregunta.distractor1}}</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label>
+                                <input class="with-gap" name="group1" type="radio"  />
+                                <span>{{pregunta.distractor2}}</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label>
+                                <input class="with-gap" name="group1" type="radio"  />
+                                <span>{{pregunta.distractor3}}</span>
+                              </label>
+                            </p>
+                            
+                          </form>
+                    </div>
+                
+                </section>
+               
+                {%endfor%}
+            </main>   
+        </div>
+    
+    </body>
+</html>

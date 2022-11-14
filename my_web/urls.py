@@ -25,7 +25,8 @@ urlpatterns = [
     path('',views.login,name="saludo"),
     path('resultados/', views.resultados,name='resultados'),
     path('votos/',include("votos.urls")),
-    path('tinymce/',include('tinymce.urls'))
+    path('tinymce/',include('tinymce.urls')),
+    path('quiz/',include('quiz.urls')),
 ]
 
 print('url:',static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))

@@ -41,6 +41,7 @@ DJANGO_APPS = [
     #"django.contrib.flatpages",
     #"django.contrib.sites",
     'tinymce',
+    'quiz',
 ]
 
 LOCAL_APPS = [

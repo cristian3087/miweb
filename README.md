@@ -40,6 +40,10 @@ Desarrollador de Software full Stack
 - Presidende de la facultad
 - Lider de la celula Microsoft
 
+#### Magister en Gerencia de Sistemas y Tecnologías de la Información
+- Marzo 2017
+
+
 ## Habilidades
 - Comunicación efectiva (verbal y escrita)
 - Trabajo en equipo y colaboración
@@ -54,7 +58,12 @@ Desarrollador de Software full Stack
 - Habilidad para aprender rápidamente
 - Conocimientos de informática y tecnología
 
-
+## Cococimientos
+-Metodologias para desarrollo de software (SCRUM)
+-Análisis de datos con (PowerBI, Tableau)
+-Ofimática (Office y Google Docs)
+-CMS y LMS
+-Servidores y servicios en Linux
 ## Idiomas
 
 - Ingles Técnico

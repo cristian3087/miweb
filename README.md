@@ -12,9 +12,9 @@
 Ingeniero de Sistemas, con experiencia en docencia, desarrollo de software y herramientas para la creación de soluciones tecnológicas innovadoras. Competente en HTML, CSS, JavaScript, Python, Django, SQL, MySQL y PostgreSQL. Fuerte capacidad para identificar y resolver problemas técnicos, trabajar en equipo y liderar proyectos. Excelente comunicación y habilidades interpersonales que ayudan a facilitar el aprendizaje y la colaboración en entornos de trabajo.
 
 ## Experiencia laboral
-Docente de Educación superior en la Universidad Católica de Cuenca.
-Docente de Educación superior para el Senescyt.
-Desarrollador de software Universidad Nacional de Educación
+Administrador de Sistemas y laboratorista
+Docencia en Educación Superior.
+Desarrollador de Software full Stack
 
 ### Universidad Católica de Cuenca
 

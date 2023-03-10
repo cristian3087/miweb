@@ -21,14 +21,14 @@ Desarrollador de Software full Stack
 #### Docente y Administrador de Sistemas
 
 - Junio 2012 - Mayo 2017
-- Docente a tiempo completo de las materías referentes a TICs
+- Docente a tiempo completo de las carreas de Contabilidad, Economía, Administración de Empresas y Educación.
 
 ### Senescyt
 
 #### Docente
 
 - Noviembre 2017 - Julio 2021
-- Docente a tiempo completo, de las materia técnicas de la carrera de desarrollo de software.
+- Docente a tiempo completo, de la carrera de desarrollo de software.
 
 ## Educación
 
